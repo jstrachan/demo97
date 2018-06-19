@@ -58,6 +58,8 @@ pipeline {
           container('maven') {
             sh 'mvn clean deploy'
 
+            input "paused"
+              
             sh 'export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml'
 
 
